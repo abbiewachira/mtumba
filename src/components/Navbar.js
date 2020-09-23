@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../whitelogo.jpg";
-
+import logo from "../blacklogo.jpg";
+import styled from "styled-components";
+import { ButtonContainer } from "./Button";
 export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-sm bg-secondary navbar-dark px-sm-5">
+        <NavWrapper className="navbar navbar-expand-sm bg-warning  navbar-dark px-sm-5">
           <Link to="/">
             <img
               src={logo}
@@ -24,12 +25,37 @@ export default class Navbar extends Component {
             </li>
           </ul>
           <Link to="/cart" className="ml-auto">
-            <button>
-              <i className="fas fa-cart-plus"></i>
-            </button>
+            <ButtonContainer>
+              <span className="mr-2">
+                <i className="fas fa-cart-plus" />
+              </span>
+              My Cart
+            </ButtonContainer>
           </Link>
-        </nav>
+        </NavWrapper>
       </div>
     );
   }
 }
+
+const NavWrapper = styled.nav`
+  .nav-link {
+    color: var(--mainDark) !important;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: all 0.5s linear;
+  }
+  .navbar-brand {
+    border-radius: 3rem;
+    transition: all 0.5s linear;
+  }
+  .nav-link:hover {
+    background: var(--mainDark);
+    color: var(--mainYellow) !important;
+    border-radius: 0.5rem;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.3);
+  }
+  .navbar-brand:hover {
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+  }
+`;
